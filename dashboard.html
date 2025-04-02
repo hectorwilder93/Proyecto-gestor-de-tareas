@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - ToDoList App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container dashboard-container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-tasks"></i>
+                <h1>ToDoList App</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html" class="active">Tareas</a></li>
+                    <li><a href="#" id="adminLink" style="display:none;">Admin</a></li>
+                    <li><a href="#" id="logoutLink">Cerrar Sesión</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <aside class="sidebar">
+            <div class="user-profile">
+                <div class="avatar">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="user-info">
+                    <h3 id="usernameDisplay">Usuario</h3>
+                    <p id="userRoleDisplay">Usuario</p>
+                </div>
+            </div>
+            
+            <div class="menu">
+                <ul>
+                    <li><a href="#" class="active" id="viewTasks"><i class="fas fa-list"></i> Mis Tareas</a></li>
+                    <li><a href="#" id="createTask"><i class="fas fa-plus-circle"></i> Crear Tarea</a></li>
+                    <li><a href="#" id="viewProfile"><i class="fas fa-user"></i> Mi Perfil</a></li>
+                </ul>
+            </div>
+        </aside>
+        
+        <main class="main-content">
+            <section id="tasksSection">
+                <div class="section-header">
+                    <h2>Mis Tareas</h2>
+                    <div class="filters">
+                        <select id="filterPriority">
+                            <option value="all">Todas las prioridades</option>
+                            <option value="high">Alta</option>
+                            <option value="medium">Media</option>
+                            <option value="low">Baja</option>
+                        </select>
+                        <select id="filterStatus">
+                            <option value="all">Todas las tareas</option>
+                            <option value="pending">Pendientes</option>
+                            <option value="completed">Completadas</option>
+                            <option value="overdue">Vencidas</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="tasks-list" id="tasksList">
+                    <!-- Las tareas se cargarán aquí dinámicamente -->
+                </div>
+            </section>
+            
+            <section id="createTaskSection" style="display:none;">
+                <div class="section-header">
+                    <h2>Crear Nueva Tarea</h2>
+                </div>
+                
+                <form id="taskForm">
+                    <div class="form-group">
+                        <label for="taskTitle">Título</label>
+                        <input type="text" id="taskTitle" name="taskTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskDescription">Descripción</label>
+                        <textarea id="taskDescription" name="taskDescription" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskDueDate">Fecha de Vencimiento</label>
+                        <input type="date" id="taskDueDate" name="taskDueDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskPriority">Prioridad</label>
+                        <select id="taskPriority" name="taskPriority" required>
+                            <option value="high">Alta</option>
+                            <option value="medium" selected>Media</option>
+                            <option value="low">Baja</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskReminder">Recordatorio</label>
+                        <input type="datetime-local" id="taskReminder" name="taskReminder">
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" id="cancelTask" class="btn btn-secondary">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar Tarea</button>
+                    </div>
+                </form>
+            </section>
+            
+            <section id="editTaskSection" style="display:none;">
+                <div class="section-header">
+                    <h2>Editar Tarea</h2>
+                </div>
+                
+                <form id="editTaskForm">
+                    <input type="hidden" id="editTaskId">
+                    <div class="form-group">
+                        <label for="editTaskTitle">Título</label>
+                        <input type="text" id="editTaskTitle" name="editTaskTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editTaskDescription">Descripción</label>
+                        <textarea id="editTaskDescription" name="editTaskDescription" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="editTaskDueDate">Fecha de Vencimiento</label>
+                        <input type="date" id="editTaskDueDate" name="editTaskDueDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editTaskPriority">Prioridad</label>
+                        <select id="editTaskPriority" name="editTaskPriority" required>
+                            <option value="high">Alta</option>
+                            <option value="medium">Media</option>
+                            <option value="low">Baja</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editTaskStatus">Estado</label>
+                        <select id="editTaskStatus" name="editTaskStatus" required>
+                            <option value="pending">Pendiente</option>
+                            <option value="completed">Completada</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editTaskReminder">Recordatorio</label>
+                        <input type="datetime-local" id="editTaskReminder" name="editTaskReminder">
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" id="cancelEdit" class="btn btn-secondary">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    </div>
+                </form>
+            </section>
+            
+            <section id="taskDetailSection" style="display:none;">
+                <div class="section-header">
+                    <h2>Detalles de la Tarea</h2>
+                </div>
+                
+                <div class="task-detail">
+                    <h3 id="detailTitle"></h3>
+                    <div class="task-meta">
+                        <span class="priority" id="detailPriority"></span>
+                        <span class="due-date" id="detailDueDate"></span>
+                        <span class="status" id="detailStatus"></span>
+                    </div>
+                    <div class="task-description">
+                        <p id="detailDescription"></p>
+                    </div>
+                    <div class="task-reminder" id="detailReminderContainer">
+                        <i class="fas fa-bell"></i>
+                        <span id="detailReminder"></span>
+                    </div>
+                    <div class="task-actions">
+                        <button id="editDetailTask" class="btn btn-primary">Editar</button>
+                        <button id="deleteDetailTask" class="btn btn-danger">Eliminar</button>
+                        <button id="backToTasks" class="btn btn-secondary">Volver</button>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="profileSection" style="display:none;">
+                <div class="section-header">
+                    <h2>Mi Perfil</h2>
+                </div>
+                
+                <div class="profile-info">
+                    <div class="avatar-large">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="profile-details">
+                        <h3 id="profileName"></h3>
+                        <p id="profileEmail"></p>
+                        <p id="profileRole"></p>
+                    </div>
+                </div>
+                
+                <form id="profileForm">
+                    <div class="form-group">
+                        <label for="profileNameInput">Nombre</label>
+                        <input type="text" id="profileNameInput" name="profileNameInput" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="profileEmailInput">Correo Electrónico</label>
+                        <input type="email" id="profileEmailInput" name="profileEmailInput" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="profileCurrentPassword">Contraseña Actual (para cambios)</label>
+                        <input type="password" id="profileCurrentPassword" name="profileCurrentPassword">
+                    </div>
+                    <div class="form-group">
+                        <label for="profileNewPassword">Nueva Contraseña</label>
+                        <input type="password" id="profileNewPassword" name="profileNewPassword">
+                    </div>
+                    <div class="form-group">
+                        <label for="profileConfirmPassword">Confirmar Nueva Contraseña</label>
+                        <input type="password" id="profileConfirmPassword" name="profileConfirmPassword">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Actualizar Perfil</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </div>
+    
+    <!-- Modal de confirmación -->
+    <div class="modal" id="confirmModal" style="display:none;">
+        <div class="modal-content">
+            <h3 id="modalTitle"></h3>
+            <p id="modalMessage"></p>
+            <div class="modal-actions">
+                <button id="modalCancel" class="btn btn-secondary">Cancelar</button>
+                <button id="modalConfirm" class="btn btn-danger">Confirmar</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal de notificación -->
+    <div class="modal" id="notificationModal" style="display:none;">
+        <div class="modal-content">
+            <h3 id="notificationTitle"></h3>
+            <p id="notificationMessage"></p>
+            <div class="modal-actions">
+                <button id="notificationClose" class="btn btn-primary">Aceptar</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="auth.js"></script>
+    <script src="tasks.js"></script>
+</body>
+</html>
