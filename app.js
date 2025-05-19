@@ -14,6 +14,14 @@ app.get('/',function(req, res) {
   res.send("Hola este es mi servidor SENA proyecto");
 });
 
+const myDB = mysql.createPool({
+  host: 'localhost',
+  port:3306,
+  user: 'root',
+  password: '',
+  database: 'db_gestor'
+})
+
 //Traer los datos de usuarios de la base de datos
 app.get('/usuarios', (req, res)=>{
   let myQuery = `SELECT * FROM db_gestor.usuarios`;
