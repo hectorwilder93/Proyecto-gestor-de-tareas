@@ -226,7 +226,7 @@ function viewTask(taskId) {
     
     showTaskDetailSection();
 }
-
+//Editar las tareas
 function editTask(taskId) {
     const task = tasks.find(t => t.id === taskId);
     if (!task) return;
@@ -262,6 +262,7 @@ function deleteCurrentTask() {
     }
 }
 
+//CRear las tareas
 function handleTaskSubmit(e) {
     e.preventDefault();
     
@@ -290,6 +291,7 @@ function handleTaskSubmit(e) {
     showTasksSection();
 }
 
+//Editar las tareas
 function handleEditTaskSubmit(e) {
     e.preventDefault();
     
@@ -320,6 +322,7 @@ function handleEditTaskSubmit(e) {
     }
 }
 
+//Eliminar tareas
 function deleteTask(taskId) {
     tasks = tasks.filter(task => task.id !== taskId);
     localStorage.setItem('todoTasks', JSON.stringify(tasks));
@@ -327,6 +330,7 @@ function deleteTask(taskId) {
     showNotification('Éxito', 'Tarea eliminada correctamente.');
 }
 
+//Actualizar el perfil
 function handleProfileUpdate(e) {
     e.preventDefault();
     
@@ -369,6 +373,9 @@ function handleProfileUpdate(e) {
         updateUIForLoggedInUser();
         showNotification('Éxito', 'Perfil actualizado correctamente.');
     }
+    setTimeout(() => {
+            window.location.href = 'dashboard.html';
+        }, 1500);
 }
 
 function checkTaskReminders() {

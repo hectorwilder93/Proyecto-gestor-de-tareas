@@ -48,10 +48,11 @@ function handleLogin(e) {
             window.location.href = 'dashboard.html';
         }, 1500);
     } else {
-        showNotification('Error', 'Correo electrónico o contraseña incorrectos.');
+        showNotification('Error', 'Correo electrónico o contraseña incorrectos, debe ir a registrarse.');
     }
 }
 
+//Registro de usuarios
 function handleRegister(e) {
     e.preventDefault();
     
