@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Funciones
+// Funcion para la validación del inicio de sesión
 function handleLogin(e) {
     e.preventDefault();
     

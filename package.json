@@ -1,0 +1,21 @@
+{
+  "name": "proyectosenagestor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "Héctor Wilder Cuéllar",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "16.5.0",
+    "express": "5.1.0",
+    "mysql": "2.18.1",
+    "nodemon": "3.1.9",
+    "proyectosenagestor": "file:"
+  }
+}
