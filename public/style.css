@@ -382,7 +382,7 @@ nav a:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 }
 
 .section-header h2 {
@@ -392,7 +392,7 @@ nav a:hover {
 
 .filters {
     display: flex;
-    gap: 15px;
+    gap: 10px;
 }
 
 .filters select {
@@ -502,6 +502,34 @@ nav a:hover {
 .task-actions .btn {
     padding: 5px 10px;
     font-size: 0.8rem;
+}
+
+#downloadBtnFile {
+    background-color: var(--primary-color);
+    color: var(--light-gray);
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#downloadBtnFile:hover {
+    background-color: var(--primary-color);
+}
+
+#printTaskBtn {
+    background-color: var(--primary-color);
+    color: var(--light-gray);
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#printTaskBtn {
+    background-color: var(--primary-color);
 }
 
 /* Detalles de tarea */
@@ -627,7 +655,7 @@ nav a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 1;
 }
 
 .modal-content {

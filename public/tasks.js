@@ -262,7 +262,7 @@ function deleteCurrentTask() {
     }
 }
 
-//CRear las tareas
+//Crear las tareas
 function handleTaskSubmit(e) {
     e.preventDefault();
     
@@ -435,3 +435,16 @@ function formatDateTime(dateTimeString) {
     };
     return new Date(dateTimeString).toLocaleDateString('es-ES', options);
 }
+
+//Descargar archivos
+downloadBtnFile.addEventListener("click", function () {
+        const link = document.createElement("a");
+        link.href = "archivo-ejemplo.txt";
+        link.download = "archivo-ejemplo.txt";
+        link.click();
+    });
+
+//Imprimir archivos
+printTaskBtn.addEventListener("click", function () {
+        window.print();
+    });
