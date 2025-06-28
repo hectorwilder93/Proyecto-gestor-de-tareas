@@ -17,5 +17,8 @@
     "mysql": "2.18.1",
     "nodemon": "3.1.9",
     "proyectosenagestor": "file:"
+  },
+  "devDependencies": {
+    "cypress": "^14.5.0"
   }
 }
